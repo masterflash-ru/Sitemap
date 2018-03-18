@@ -8,6 +8,10 @@ namespace Mf\Sitemap;
 use Zend\Router\Http\Segment;
 use Zend\Router\Http\Literal;
 
+
+use Zend\ServiceManager\Factory\InvokableFactory;
+
+
 return [
     //маршруты
     'router' => [
@@ -45,8 +49,12 @@ return [
         ],
     ],
     'service_manager' => [
-        'factories' => [//сервисы-фабрики
-          //Service\GetControllersInfo::class => Service\Factory\GetControllersInfoFactory::class,
+        'factories' => [
+                    Service\PluginManager::class => Service\PluginManagerFactory::class
+        ],
+        'aliases' => [
+
+
         ],
     ],
 

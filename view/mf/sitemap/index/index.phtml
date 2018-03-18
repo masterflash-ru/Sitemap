@@ -1,0 +1,14 @@
+<?php
+header ("content-type:","text/xml");
+
+$navigationHelper=$this->navigation()->setPluginManager($this->pluginManager);
+
+
+foreach ($this->items as $item){
+    $lastmod=null;
+    if (!empty($item["lastmod"])) {
+        $lastmod=$item["lastmod"];
+    }
+    $navigationHelper->addPage(["uri"=>$this->url("sitemap",["url"=>$item["name"]] ),"lastmod"=>$lastmod] );
+}
+echo $this->navigation()->sitemapindex()->render();

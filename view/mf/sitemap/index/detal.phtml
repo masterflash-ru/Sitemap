@@ -1,0 +1,8 @@
+<?php
+header ("content-type:","text/xml");
+
+echo $this->navigation($this->navigation)->sitemap()->render();
+    
+ //\Zend\Debug\Debug::dump(get_class_methods($this->navigation($navigation)->getPluginManager()    ));   
+    
+//var_dump(  $this->navigation($navigation)->getPluginManager()->has("sitemapindex")   );
