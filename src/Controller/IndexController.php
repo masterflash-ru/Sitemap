@@ -66,14 +66,14 @@ public function detalAction()
     }
     if (count($rez)==0) {throw new  Exception("Карта $name пустая");}
 
-	$factory    = new ConstructedNavigationFactory($rez);
-	$navigation = $factory->createService($this->ServiceManager);
-    
+    $factory    = new ConstructedNavigationFactory($rez);
+    $navigation = $factory->createService($this->ServiceManager);
+
     $view=new ViewModel([
         "navigation"=>$navigation,
         "ServerDefaultUri"=>$this->ServerDefaultUri
     ]);
-    
+
     $view->setTerminal(true);
 
     return $view;

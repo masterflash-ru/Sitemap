@@ -56,6 +56,7 @@ return [
             __DIR__ . '/../view',
         ],
     ],
+    /*Канонический адрес сайта*/
     "ServerDefaultUri"=>"http://".trim($_SERVER["SERVER_NAME"],"w."),
 
 ];
