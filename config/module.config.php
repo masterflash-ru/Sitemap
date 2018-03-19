@@ -9,9 +9,6 @@ use Zend\Router\Http\Segment;
 use Zend\Router\Http\Literal;
 
 
-use Zend\ServiceManager\Factory\InvokableFactory;
-
-
 return [
     //маршруты
     'router' => [
@@ -19,7 +16,7 @@ return [
             'sitemap' => [
                 'type' => Segment::class,
                 'options' => [
-                    'route'    => '/sitemap/:url',
+                    'route'    => '/sitemap/:url/sitemap.xml',
                     'constraints' => [
                         'url' => '[a-zA-Z0-9_\-]+',
                     ],
@@ -33,7 +30,7 @@ return [
             'sitemapintex' => [
                 'type' => Literal::class,
                 'options' => [
-                    'route'    => '/sitemap',
+                    'route'    => '/sitemap.xml',
                     'defaults' => [
                         'controller' => Controller\IndexController::class,
                         'action'    => 'index',
@@ -51,10 +48,6 @@ return [
     'service_manager' => [
         'factories' => [
                     Service\PluginManager::class => Service\PluginManagerFactory::class
-        ],
-        'aliases' => [
-
-
         ],
     ],
 

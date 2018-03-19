@@ -16,14 +16,12 @@ use Mf\Sitemap\Service\PluginManager;
 
 class IndexController extends AbstractActionController
 {
-
-    protected $connection;
     protected $EventManager;
     protected $ServiceManager;
 
-public function __construct ($connection,$EventManager,$ServiceManager)
+public function __construct ($EventManager,$ServiceManager)
 {
-    $this->connection=$connection;
+
     $this->EventManager=$EventManager;
     $this->ServiceManager=$ServiceManager;
 }
