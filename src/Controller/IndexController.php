@@ -36,11 +36,12 @@ public function indexAction()
 
     /*новый плагин для генерации sitemap*/
     $pluginManager = $this->ServiceManager->get(PluginManager::class);
-    
+    $items=$this->EventManager->trigger("GetMap", $this, ["type"=>"sitemapindex","locale"=>"ru_RU"]);
+    if (count($items)==0) {throw new  Exception("Нет ни одной доступной карты сайта");}
     $view=new ViewModel([
         "navigation"=>$navigation,
         "pluginManager"=>$pluginManager,
-        "items"=>$this->EventManager->trigger("GetMap", $this, ["type"=>"sitemapindex","locale"=>"ru_RU"])
+        "items"=>$items
     ]);
     
     $view->setTerminal(true);
@@ -48,7 +49,7 @@ public function indexAction()
     return $view;
 }
 
-    /**
+/**
 *формирование sitemap для конкретного модуля
 */
 public function detalAction()
@@ -58,6 +59,7 @@ public function detalAction()
     foreach ($this->EventManager->trigger("GetMap", $this, ["type"=>"sitemap","locale"=>"ru_RU","name"=>$name]) as $item){
         if (!empty($item)) {$rez=array_merge($rez,$item);}
     }
+    if (count($rez)==0) {throw new  Exception("Карта $name пустая");}
 
 	$factory    = new ConstructedNavigationFactory($rez);
 	$navigation = $factory->createService($this->ServiceManager);
