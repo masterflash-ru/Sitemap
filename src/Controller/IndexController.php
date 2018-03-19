@@ -18,12 +18,16 @@ class IndexController extends AbstractActionController
 {
     protected $EventManager;
     protected $ServiceManager;
+    protected $ServerDefaultUri;
 
 public function __construct ($EventManager,$ServiceManager)
 {
 
     $this->EventManager=$EventManager;
     $this->ServiceManager=$ServiceManager;
+    $config=$ServiceManager->get("config");
+    $this->ServerDefaultUri=$config["ServerDefaultUri"];
+    
 }
 
 /**
@@ -41,7 +45,8 @@ public function indexAction()
     $view=new ViewModel([
         "navigation"=>$navigation,
         "pluginManager"=>$pluginManager,
-        "items"=>$items
+        "items"=>$items,
+        "ServerDefaultUri"=>$this->ServerDefaultUri
     ]);
     
     $view->setTerminal(true);
@@ -66,6 +71,7 @@ public function detalAction()
     
     $view=new ViewModel([
         "navigation"=>$navigation,
+        "ServerDefaultUri"=>$this->ServerDefaultUri
     ]);
     
     $view->setTerminal(true);

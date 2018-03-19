@@ -56,6 +56,6 @@ return [
             __DIR__ . '/../view',
         ],
     ],
-
+    "ServerDefaultUri"=>"http://".trim($_SERVER["SERVER_NAME"],"w."),
 
 ];

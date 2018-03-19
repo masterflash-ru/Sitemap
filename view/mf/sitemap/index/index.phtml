@@ -11,4 +11,4 @@ foreach ($this->items as $item){
     }
     $navigationHelper->addPage(["uri"=>$this->url("sitemap",["url"=>$item["name"]] ),"lastmod"=>$lastmod] );
 }
-echo $this->navigation()->sitemapindex()->render();
+echo $this->navigation()->sitemapindex()->setServerUrl($this->ServerDefaultUri)->render();
