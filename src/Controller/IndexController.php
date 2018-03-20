@@ -59,24 +59,32 @@ public function indexAction()
 */
 public function detalAction()
 {
-    $name=$this->params('url',NULL);
-    $rez=[];
-    foreach ($this->EventManager->trigger("GetMap", $this, ["type"=>"sitemap","locale"=>"ru_RU","name"=>$name]) as $item){
-        if (!empty($item)) {$rez=array_merge($rez,$item);}
+    try{
+            $name=$this->params('url',NULL);
+            $rez=[];
+            foreach ($this->EventManager->trigger("GetMap", $this, ["type"=>"sitemap","locale"=>"ru_RU","name"=>$name]) as $item){
+                if (!empty($item)) {$rez=array_merge($rez,$item);}
+            }
+            if (count($rez)==0) {throw new  Exception("Карта $name пустая");}
+
+            $factory    = new ConstructedNavigationFactory($rez);
+            $navigation = $factory->createService($this->ServiceManager);
+
+            $view=new ViewModel([
+                "navigation"=>$navigation,
+                "ServerDefaultUri"=>$this->ServerDefaultUri
+            ]);
+
+            $view->setTerminal(true);
+
+            return $view;
     }
-    if (count($rez)==0) {throw new  Exception("Карта $name пустая");}
+    	catch (\Exception $e) 
+		{
+			//любое исключение - 404
+			$this->getResponse()->setStatusCode(404);
+		}
 
-    $factory    = new ConstructedNavigationFactory($rez);
-    $navigation = $factory->createService($this->ServiceManager);
-
-    $view=new ViewModel([
-        "navigation"=>$navigation,
-        "ServerDefaultUri"=>$this->ServerDefaultUri
-    ]);
-
-    $view->setTerminal(true);
-
-    return $view;
 }
 
     
