@@ -65,7 +65,6 @@ public function detalAction()
             foreach ($this->EventManager->trigger("GetMap", $this, ["type"=>"sitemap","locale"=>"ru_RU","name"=>$name]) as $item){
                 if (!empty($item)) {$rez=array_merge($rez,$item);}
             }
-            if (count($rez)==0) {throw new  Exception("Карта $name пустая");}
 
             $factory    = new ConstructedNavigationFactory($rez);
             $navigation = $factory->createService($this->ServiceManager);
