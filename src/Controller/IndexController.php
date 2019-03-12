@@ -50,6 +50,9 @@ public function indexAction()
     ]);
     
     $view->setTerminal(true);
+    $response=$this->getResponse();
+    $headers = $response->getHeaders();
+     $headers->addHeaderLine('content-type', "text/xml; charset=UTF-8");
 
     return $view;
 }
@@ -75,6 +78,9 @@ public function detalAction()
             ]);
 
             $view->setTerminal(true);
+    $response=$this->getResponse();
+    $headers = $response->getHeaders();
+     $headers->addHeaderLine('content-type', "text/xml; charset=UTF-8");
 
             return $view;
     }
