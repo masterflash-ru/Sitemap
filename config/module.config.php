@@ -8,6 +8,11 @@ namespace Mf\Sitemap;
 use Zend\Router\Http\Segment;
 use Zend\Router\Http\Literal;
 
+if (empty($_SERVER["SERVER_NAME"])){
+    //скорей всего запустили из консоли
+    $_SERVER["SERVER_NAME"]="localhost";
+    $_SERVER["REQUEST_SCHEME"]="http";
+}
 
 return [
     //маршруты
