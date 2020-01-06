@@ -5,8 +5,8 @@
 
 namespace Mf\Sitemap;
 
-use Zend\Router\Http\Segment;
-use Zend\Router\Http\Literal;
+use Laminas\Router\Http\Segment;
+use Laminas\Router\Http\Literal;
 
 if (empty($_SERVER["SERVER_NAME"])){
     //скорей всего запустили из консоли

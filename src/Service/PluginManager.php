@@ -1,21 +1,16 @@
 <?php
 /**
- * Zend Framework (http://framework.zend.com/)
- *
- * @link      http://github.com/zendframework/zf2 for the canonical source repository
- * @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
 namespace Mf\Sitemap\Service;
 
 use Interop\Container\ContainerInterface;
-use Zend\ServiceManager\Factory\InvokableFactory;
-use Zend\View\HelperPluginManager;
+use Laminas\ServiceManager\Factory\InvokableFactory;
+use Laminas\View\HelperPluginManager;
 use Mf\Sitemap\View\Helper\Navigation\SitemapIndex;
 
-use Zend\View\Helper\Navigation\PluginManager as ZendNavigationPluginManager;
-use Zend\View\Helper\Navigation;
+use Laminas\View\Helper\Navigation\PluginManager as LaminasNavigationPluginManager;
+use Laminas\View\Helper\Navigation;
 
 
 /**
@@ -25,7 +20,7 @@ use Zend\View\Helper\Navigation;
  * Navigation\HelperInterface. Additionally, it registers a number of default
  * helpers.
  */
-class PluginManager extends ZendNavigationPluginManager
+class PluginManager extends LaminasNavigationPluginManager
 {
     /**
      * @var string Valid instance types.
@@ -52,7 +47,7 @@ class PluginManager extends ZendNavigationPluginManager
         SitemapIndex::class     => InvokableFactory::class,
         // v2 canonical FQCNs
 
-        'zendviewhelpernavigationsitemap'     => InvokableFactory::class,
+        'Laminasviewhelpernavigationsitemap'     => InvokableFactory::class,
     ];
 
     /**

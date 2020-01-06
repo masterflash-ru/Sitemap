@@ -10,9 +10,9 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": "^7.0",
-        "zendframework/zend-navigation": "^2.8",
-        "zendframework/zend-view": "^2.10"
+        "php": "^7.2",
+        "laminas/laminas-navigation": "^2.8",
+        "laminas/laminas-view": "^2.10"
     },
     "autoload": {
         "psr-4": {

@@ -6,10 +6,10 @@
 
 namespace Mf\Sitemap\Controller;
 
-use Zend\Mvc\Controller\AbstractActionController;
-use Zend\View\Model\ViewModel;
+use Laminas\Mvc\Controller\AbstractActionController;
+use Laminas\View\Model\ViewModel;
 use Exception;
-use Zend\Navigation\Service\ConstructedNavigationFactory;
+use Laminas\Navigation\Service\ConstructedNavigationFactory;
 
 use Mf\Sitemap\Service\PluginManager;
 

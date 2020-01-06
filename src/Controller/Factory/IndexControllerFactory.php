@@ -2,9 +2,9 @@
 namespace Mf\Sitemap\Controller\Factory;
 
 use Interop\Container\ContainerInterface;
-use Zend\ServiceManager\Factory\FactoryInterface;
-use Zend\EventManager\EventManager;
-use Zend\EventManager\Event;
+use Laminas\ServiceManager\Factory\FactoryInterface;
+use Laminas\EventManager\EventManager;
+use Laminas\EventManager\Event;
 
 /**
  */

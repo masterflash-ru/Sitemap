@@ -9,10 +9,10 @@ namespace Mf\Sitemap\View\Helper\Navigation;
 
 use DOMDocument;
 use RecursiveIteratorIterator;
-use Zend\Navigation\AbstractContainer;
-use Zend\Stdlib\ErrorHandler;
-use Zend\View\Exception;
-use Zend\View\Helper\Navigation\Sitemap;
+use Laminas\Navigation\AbstractContainer;
+use Laminas\Stdlib\ErrorHandler;
+use Laminas\View\Exception;
+use Laminas\View\Helper\Navigation\Sitemap;
 
 class SitemapIndex extends Sitemap
 {
@@ -45,8 +45,8 @@ class SitemapIndex extends Sitemap
         // check if we should validate using our own validators
         if ($this->getUseSitemapValidators()) {
             // create validators
-            $locValidator        = new \Zend\Validator\Sitemap\Loc();
-            $lastmodValidator    = new \Zend\Validator\Sitemap\Lastmod();
+            $locValidator        = new \Laminas\Validator\Sitemap\Loc();
+            $lastmodValidator    = new \Laminas\Validator\Sitemap\Lastmod();
         }
 
         // create document
